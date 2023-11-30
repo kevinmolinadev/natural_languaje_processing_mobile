@@ -40,6 +40,8 @@ dependencies:
   firebase_auth: ^4.15.0
   cloud_firestore: ^4.13.3
   voice_to_text: ^1.0.3
+  loading_animation_widget: ^1.2.0+4
+  http: ^1.1.0
 
 dev_dependencies:
   flutter_test:
