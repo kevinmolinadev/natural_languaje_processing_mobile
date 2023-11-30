@@ -1,0 +1,4 @@
+enum FormType {
+  Login,
+  Register,
+}
