@@ -14,7 +14,7 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key}); 
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +24,13 @@ class MyApp extends StatelessWidget {
             create: (context) => LoginBloc(),
           )
         ],
-        child: const MaterialApp(
+        child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'NLP',
-          home: Login(),
+          theme: ThemeData(
+            primaryColor: const Color(0xFF9e0044),
+          ),
+          home: const Login(),
         ));
   }
 }

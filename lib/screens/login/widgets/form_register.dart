@@ -60,6 +60,7 @@ class _RegisterForm extends State<RegisterForm> {
           TextFormField(
             decoration: widget.decoration('Contraseña'),
             controller: widget.password,
+            obscureText: true,
             validator: (value) =>
                 value!.isEmpty ? 'Por favor ingrese una contraseña' : null,
           ),

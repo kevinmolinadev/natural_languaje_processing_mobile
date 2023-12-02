@@ -9,7 +9,7 @@ class Load extends StatefulWidget {
 }
 
 class _Load extends State<Load> {
-  Color color = Colors.blue;
+  Color color = const Color(0xFF9e0044);
   @override
   Widget build(BuildContext context) {
     switch (widget.type) {
