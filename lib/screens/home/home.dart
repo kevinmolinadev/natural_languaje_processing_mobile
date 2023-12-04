@@ -44,7 +44,7 @@ class _Home extends State<Home> {
           Container(
             margin: const EdgeInsets.only(bottom: 8, right: 8),
             padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -61,20 +61,21 @@ class _Home extends State<Home> {
             ),
             child: Text(
               questionInput,
-              style: styles,
+              style: const TextStyle(color: Colors.white),
             ),
           ),
           Text(
             DateFormat.Hm().format(DateTime.now()),
-            style: TextStyle(fontSize: 12, color: Colors.grey),
+            style: const TextStyle(fontSize: 12, color: Colors.grey),
           ),
+          const SizedBox(height: 10)
         ],
       ),
     );
   }
 
   Widget newResponse(String result) {
-    Widget loading = Align(
+    Widget loading = const Align(
       alignment: Alignment.centerLeft,
       child: SizedBox(
         width: 50,
@@ -98,7 +99,7 @@ class _Home extends State<Home> {
           Container(
             margin: const EdgeInsets.only(bottom: 8, left: 8),
             padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -120,7 +121,7 @@ class _Home extends State<Home> {
           ),
           Text(
             DateFormat.Hm().format(DateTime.now()),
-            style: TextStyle(fontSize: 12, color: Colors.grey),
+            style: const TextStyle(fontSize: 12, color: Colors.grey),
           ),
         ],
       ),
@@ -136,19 +137,20 @@ class _Home extends State<Home> {
   }
 
   void sendQuestion() async {
-    chat.add(newQuestion(questionController.text));
+    String question = questionController.text;
+    chat.add(newQuestion(question));
     chat.add(newResponse(""));
+    questionController.text = "";
     setState(() {});
-    getAnswer();
+    getAnswer(question);
   }
 
-  void getAnswer() async {
+  void getAnswer(String question) async {
     QuestionClient clinet = QuestionClient();
-    final data = await clinet.sendQuestion(questionController.text);
+    final data = await clinet.sendQuestion(question);
     Question questionAnswer = Question.fromJSON(data);
     chat.removeLast();
     chat.add(newResponse(questionAnswer.result));
-    questionController.text = "";
     setState(() {});
   }
 
@@ -217,7 +219,7 @@ class _Home extends State<Home> {
         backgroundColor: const Color(0xFF9E0044), // Color principal
       ),
       body: Container(
-        color: Color(0xFFF4EFF3),
+        color: const Color(0xFFF4EFF3),
         alignment: Alignment.center,
         child: Column(
           children: <Widget>[
@@ -235,7 +237,7 @@ class _Home extends State<Home> {
             Align(
                 alignment: Alignment.centerLeft,
                 child: Card(
-                  margin: EdgeInsets.all(5),
+                  margin: const EdgeInsets.all(5),
                   color: const Color(0xFF9e0044),
                   child: TextButton(
                       onPressed: clearChat,
